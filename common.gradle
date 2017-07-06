@@ -1,0 +1,5 @@
+apply from: "https://github.com/yidadi/gradle/tree/master/common-ext.gradle"
+apply plugin: 'java'
+apply plugin: 'idea'
+apply from: "${scriptUrlPrefix}repository.gradle"
+apply from: "${scriptUrlPrefix}publish.gradle"

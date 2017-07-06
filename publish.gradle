@@ -1,0 +1,44 @@
+apply plugin: 'maven-publish'
+apply plugin: 'java'
+
+if(project.hasProperty('nexus_user_name') && project.hasProperty('nexus_user_password')) {
+    publishing {
+        repositories {
+
+            maven {
+                credentials {
+                    username = nexus_user_name
+                    password = nexus_user_password
+                }
+                url "http://${nexusIp}/nexus/content/repositories/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}"
+            }
+        }
+        publications {
+            maven(MavenPublication) {
+                groupId project.hasProperty("jar_group_id")?jar_group_id:project.getGroup()
+                artifactId project.hasProperty("jar_artifact_id")?jar_artifact_id:project.getName()
+
+                version project.hasProperty("jar_version")?jar_version:project.getVersion()
+
+                from components.java
+                artifact sourceJar {
+                    classifier "sources"
+                }
+                pom.withXml {
+                    asNode().dependencies.'*'.findAll() {
+                        it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
+                            dep.name == it.artifactId.text()
+                        }
+                    }.each() {
+                        it.scope*.value = 'compile'
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
