@@ -1,4 +1,4 @@
-apply from: "https://raw.githubusercontent.com/yidadi/gradle/tree/master/common-ext.gradle"
+apply from: "https://raw.githubusercontent.com/yidadi/gradle/master/common-ext.gradle"
 project.buildscript.repositories({
     mavenLocal()
     maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter/" }
