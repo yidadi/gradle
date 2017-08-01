@@ -4,6 +4,6 @@ repositories {
 //    maven { url "http://${nexusIp}/nexus/content/repositories/spring-release/" }
 //    maven { url "http://${nexusIp}/nexus/content/repositories/spring-milestone/" }
 //    maven { url "http://${nexusIp}/nexus/content/repositories/central/" }
-//    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+      maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 //    jcenter()
 }
