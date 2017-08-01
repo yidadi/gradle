@@ -1,4 +1,4 @@
-apply from: "https://github.com/yidadi/gradle/tree/master/common-ext.gradle"
+apply from: "http://raw.githubusercontent.com/yidadi/gradle/tree/master/common-ext.gradle"
 apply plugin: 'java'
 apply plugin: 'idea'
 apply from: "${scriptUrlPrefix}repository.gradle"
