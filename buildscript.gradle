@@ -1,7 +1,7 @@
 apply from: "https://github.com/yidadi/gradle/tree/master/common-ext.gradle"
 project.buildscript.repositories({
     mavenLocal()
-//    maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter/" }
+    maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter/" }
 //    maven { url 'http://repo.spring.io/plugins-release/' }
     maven { url "http://${nexusIp}/nexus/content/groups/public/" }
 })
